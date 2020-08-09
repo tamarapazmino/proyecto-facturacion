@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+
+{% block contenido %}
+<form method="POST" class="post-form" action="/productos/nuevo/">
+    {% csrf_token %}
+    <div class="container">
+        <br>
+        <div class="form-group row">
+            <label class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-4">
+                <h3><i class="fa fa-gift"></i> Registrar Producto</h3>
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="col-sm-4"><i class="fa fa-server"></i> Descripcion:</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" name="descripcion" id="descripcion" required maxlength="100"/> 
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="col-sm-4"><i class="fa fa-usd"></i> Precio:</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="number" name="precio" value="0" step="any" required="" id="id_precio">
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="col-sm-4"><i class="fa fa-toggle-up"></i> Stock:</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="number" name="stock" value="0" step="any" required="" id="id_stock">
+            </div>
+        </div>
+        <div class="form-group form-inline ">
+            <label class="col-sm-4 vCheckboxLabel" for="iva"><i class="fa fa-percent"></i> Iva</label>
+            <div class="col-sm-4">
+                <div class="checkbox-row">
+                    <input type="checkbox" name="iva" id="iva" checked>
+               </div>
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="col-sm-6 col-form-label"></label>
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i> Registrar</button>
+                <a href="/productos" class="btn btn-danger btn-sm"> <i class="fa fa-mail-reply-all"></i> Cancelar<a/>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock contenido %}

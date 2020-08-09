@@ -1,0 +1,88 @@
+{% extends 'index.html' %}
+
+{% block contenido %}
+<div class="container ">
+    <h2><i class="fa fa-group"></i> CLIENTES</h2>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading form-group">
+                    <a href="/clientes/nuevo" class="btn btn-primary btn-sm"><i
+                            class="fa fa-plus-circle"></i>
+                        Agregar</a>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>RUC</th>
+                                <th>NOMBRE</th>
+                                <th>DIRECCION</th>
+                                <th>PRODUCTOS</th>
+                                <th>ACCIÓN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cliente in cli %}
+                            <tr class="odd gradeX">
+                                <td>{{ cliente.id }}</td>
+                                <td>{{ cliente.ruc }}</td>
+                                <td>{{ cliente.nombre}}</td>
+                                <td>{{ cliente.direccion }}</td>
+                                <td>
+                                    {% for c in clientes %}
+                                    {% if c.id == cliente.id %}
+                                    {{ c.producto__descripcion}},
+                                    {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    <a href="/clientes/editar/{{cliente.id}}"><span class="btn btn-warning btn-sm"><i
+                                                class="fa fa-pencil"></i> Editar</span></a>
+                                    <a href="/clientes/eliminar/{{ cliente.id }}"><span class="btn btn-danger btn-sm"><i
+                                                class="fa fa-times-circle"></i> Eliminar</span></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="pagination">
+                        <nav aria-label="Page navigation example">
+                            {% if cli.has_other_pages %}
+                            <ul class="pagination">
+                                {% if cli.has_previous %}
+                                <li class="page-item"><a class="page-link"
+                                        href="?page={{  cli.previous_page_number }}">atrás</a></li>
+                                {% else %}
+                                <li class="page-item disabled"><a class="page-link" href="#">atrás</a></li>
+                                {% endif %}
+                                {% for i in cli.paginator.page_range %}
+                                {% if cli.number == i %}
+                                <li class="page-item active"><span class="page-link">{{ i }} <span
+                                            class="sr-only"></span></span></li>
+                                {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+                                {% endfor %}
+                                {% if cli.has_next %}
+                                <li class="page-item"><a class="page-link"
+                                        href="?page={{ cli.next_page_number }}">siguiente</a></li>
+                                {% else %}
+                                <li class="page-item disabled"><a class="page-link" href="#">siguiente</a></li>
+                                {% endif %}
+                            </ul>
+                            {% endif %}
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+</div>
+{% endblock contenido %}

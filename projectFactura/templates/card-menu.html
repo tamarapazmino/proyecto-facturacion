@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+{% block contenido %}
+<div class="container-fluid animated fadeInRightBig">
+    <!-- Icon Cards-->
+    {% load static %}
+    <br>
+    <div class="row">                         
+        <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="{% static "img/clientes.png" %}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Clientes</h5>
+                <p class="card-text"></p>
+                <a href="/clientes" class="btn btn-primary">ver detalles</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="{% static "img/carrito.jpg" %}" alt="Card image cap" with="880px" height="220px">
+              <div class="card-body">
+                <h5 class="card-title">Ventas</h5>
+                <p class="card-text"></p>
+                <a href="/ventas" class="btn btn-primary">ver detalles</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="{% static "img/productos.jpg" %}" alt="Card image cap"  with="880px" height="220px">
+              <div class="card-body">
+                <h5 class="card-title">Productos</h5>
+                <p class="card-text"></p>
+                <a href="/productos" class="btn btn-primary">ver detalles</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{% static "img/admin.jpg" %}" alt="Card image cap"  with="880px" height="220px">
+            <div class="card-body">
+              <h5 class="card-title">Administracion</h5>
+              <p class="card-text"></p>
+              <a href="#" class="btn btn-primary">Ir al Admin</a>
+            </div>
+          </div>
+        </div>
+    <!-- Area Chart Example-->
+    </div>
+</div>
+{% endblock contenido %}

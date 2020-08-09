@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+
+{% block contenido %}
+<form method="POST" class="post-form" action="/clientes/actualizar/{{cliente.id}}">
+    {% csrf_token %}
+    <div class="container">
+        <br>
+        <div class="form-group row">
+            <label class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-4">
+                <h3><i class="fa fa-group"></i> Actualizar Cliente</h3>
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="col-sm-4"><i class="fa fa-address-card"></i> Ruc:</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" name="ruc" id="ruc" required maxlength="13" value="{{ cliente.ruc }}"/> 
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="col-sm-4"><i class="fa fa-user"></i> Nombre:</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" name="nombre" id="nombre" required maxlength="300" value="{{ cliente.nombre }}"/> 
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="col-sm-4"><i class="fa fa-navicon"></i> Direccion:</label>
+            <div class="col-sm-4">
+                <textarea class="form-control" name="direccion" required maxlength="200" cols="30" rows="7">{{ cliente.direccion }}</textarea> 
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="col-sm-4"><i class="fa fa-gift"></i> Productos:</label>
+            <div class="col-sm-4">
+                <select class="form-control" name="producto" required="" id="id_producto" multiple="">
+                    {% for product in productos%}
+                    <option value="{{product.producto__id}}">{{product.producto__descripcion}}</option>
+                   {% endfor %}
+                  </select>
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="col-sm-6 col-form-label"></label>
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i> Actualizar</button>
+                <a href="/clientes" class="btn btn-danger btn-sm"> <i class="fa fa-mail-reply-all"></i> Cancelar<a/>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock contenido %}
